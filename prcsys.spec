@@ -11,6 +11,7 @@ Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System/Base
 Url: http://www.zarb.org/~couriousous/boot/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Conflicts: initscripts < 8.38
 
 %description
