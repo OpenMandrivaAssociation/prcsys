@@ -1,11 +1,10 @@
 %define name prcsys
 %define version 0.0.3
-%define release %mkrel 1
 
 Summary: Parallel init for Mandriva
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: %mkrel 2
 # SVN snapshot from http://zarb.org/users/svn/trem/prcsys/trunk/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
