@@ -4,7 +4,7 @@
 Summary: Parallel init for Mandriva
 Name: %{name}
 Version: %{version}
-Release: %mkrel 2
+Release: %mkrel 3
 # SVN snapshot from http://zarb.org/users/svn/trem/prcsys/trunk/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
