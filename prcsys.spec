@@ -4,9 +4,10 @@
 Summary: Parallel init for Mandriva
 Name: %{name}
 Version: %{version}
-Release: %mkrel 3
+Release: %mkrel 4
 # SVN snapshot from http://zarb.org/users/svn/trem/prcsys/trunk/
 Source0: %{name}-%{version}.tar.bz2
+Patch0: prcsys-0.0.3-LDFLAGS.diff
 License: GPL
 Group: System/Base
 Url: http://www.zarb.org/~couriousous/boot/
@@ -19,9 +20,10 @@ It should be LSB compliant.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0 -b .LDFLAGS
 
 %build
-%make
+%make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 
 %install
 rm -rf %{buildroot}
