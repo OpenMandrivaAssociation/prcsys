@@ -4,10 +4,12 @@
 Summary: Parallel init for Mandriva
 Name: %{name}
 Version: %{version}
-Release: %mkrel 4
+Release: %mkrel 5
 # SVN snapshot from http://zarb.org/users/svn/trem/prcsys/trunk/
 Source0: %{name}-%{version}.tar.bz2
 Patch0: prcsys-0.0.3-LDFLAGS.diff
+# (fc) 0.0.3-5mdv add support for plymouth
+Patch1: prcsys-0.0.3-plymouth.patch
 License: GPL
 Group: System/Base
 Url: http://www.zarb.org/~couriousous/boot/
@@ -21,6 +23,7 @@ It should be LSB compliant.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p0 -b .LDFLAGS
+%patch1 -p1 -b .plymouth
 
 %build
 %make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
