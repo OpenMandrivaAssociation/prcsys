@@ -4,7 +4,7 @@
 Summary: Parallel init for Mandriva
 Name: %{name}
 Version: %{version}
-Release: %mkrel 6
+Release: %mkrel 7
 # SVN snapshot from http://zarb.org/users/svn/trem/prcsys/trunk/
 Source0: %{name}-%{version}.tar.bz2
 Patch0: prcsys-0.0.3-LDFLAGS.diff
