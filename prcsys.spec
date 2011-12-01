@@ -30,8 +30,8 @@ It should be LSB compliant.
 
 %install
 rm -rf %{buildroot}
-mkdir -p $RPM_BUILD_ROOT/sbin
-install -m755 prcsys $RPM_BUILD_ROOT/sbin/
+mkdir -p %{buildroot}/sbin
+install -m755 prcsys %{buildroot}/sbin/
 
 %clean
 rm -rf %{buildroot}
