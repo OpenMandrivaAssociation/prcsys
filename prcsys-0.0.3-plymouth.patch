@@ -1,0 +1,49 @@
+From 25755992a17d1888b76bab2faa10b5351dffa945 Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@mandriva.com>
+Date: Thu, 13 Aug 2009 17:54:38 +0200
+Subject: [PATCH] add support for plymouth
+
+---
+ prcsys_action.c |   12 +++++++++++-
+ 1 files changed, 11 insertions(+), 1 deletions(-)
+
+diff --git a/prcsys_action.c b/prcsys_action.c
+index 6b236e9..d37af1d 100644
+--- a/prcsys_action.c
++++ b/prcsys_action.c
+@@ -63,13 +63,22 @@ void rc_splash(char * string) {
+ 	int progress;
+ 	char buf[255];
+ 	static pthread_mutex_t splash_mutex = PTHREAD_MUTEX_INITIALIZER;
++	static int is_plymouth = -1;
+ 	
+ 	env = getenv("splash_rc");
+ 	
+ 	if(!env || strcmp(env,"yes")) {
+ 		return;
+ 	}
++	if (is_plymouth == -1) {
++		env = getenv("splash_mode");
++		is_plymouth = (env && strcmp(env,"plymouth") == 0);
++	}
+ 	pthread_mutex_lock(&splash_mutex);
++	if (is_plymouth) {
++		run_command("/bin/plymouth --update %s 2>&1", string);
++	} else {
++
+ 	if((env = getenv("progress")) == NULL) 
+ 		progress = 0;
+ 	else
+@@ -79,7 +88,8 @@ void rc_splash(char * string) {
+ 	
+ 	setenv("progress",buf,1);
+ 	
+-	run_command("/sbin/splash.sh %s 2>&1",string);	
++	run_command("/sbin/splash.sh %s 2>&1",string);
++	}
+ 
+ 	pthread_mutex_unlock(&splash_mutex);
+ }
+-- 
+1.6.4
+
