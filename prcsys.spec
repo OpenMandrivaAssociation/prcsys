@@ -12,7 +12,7 @@ Patch0: prcsys-0.0.3-LDFLAGS.diff
 Patch1: prcsys-0.0.3-plymouth.patch
 License: GPL
 Group: System/Base
-Url: http://www.zarb.org/~couriousous/boot/
+Url: https://www.zarb.org/~couriousous/boot/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Conflicts: initscripts < 8.38
 
